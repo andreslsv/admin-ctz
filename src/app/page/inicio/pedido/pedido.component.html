@@ -1,0 +1,193 @@
+<section class="h-full overflow-y-scroll">
+    <form [formGroup]="filtroPedidoForm" crossOrigin="Anonymous">
+    
+        <div class="grid gap-2 grid-cols-2 w-full">
+            <mat-form-field appearance="outline" class="w-full mb-0">
+                <mat-label>Cliente</mat-label>
+                <input
+                    matInput
+                    [formControlName]="'cliente'"
+                    >
+                    <!--
+                    <button>
+                        <mat-icon
+                        class="icon-size-5"
+                        [svgIcon]="'heroicons_outline:plus'"></mat-icon>
+                    </button>
+                    -->
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline" class="w-full mr-2">
+                <mat-label>Fecha</mat-label>
+                <input
+                    matInput
+                    [formControlName]="'fecha'"
+                    [matDatepicker]="picker"
+                    >
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+    
+        <div class="grid gap-2 grid-cols-2 w-full">
+            <mat-form-field appearance="outline" class="w-full mr-2">
+                <mat-label>Tipo de concreto</mat-label>
+                <input
+                    matInput
+                    [formControlName]="'tipo_concreto'"
+                    >
+    
+                <!--
+                <button>
+                    <mat-icon
+                    class="icon-size-5"
+                    [svgIcon]="'heroicons_outline:plus'"></mat-icon>
+                </button>-->
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline" class="w-full mr-2">
+                <mat-label>Hora en cargue</mat-label>
+                <input
+                    matInput
+                    [formControlName]="'hora_cargue'"
+                    >
+            </mat-form-field>
+        </div>
+    
+        <div class="grid gap-2 grid-cols-2 w-full">
+            <mat-form-field appearance="outline" class="w-full mr-2">
+                <mat-label>Metros3</mat-label>
+                <input
+                    matInput
+                    [formControlName]="'metros3'"
+                    >
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline" class="w-full mr-2">
+                <mat-label>Hora en obra</mat-label>
+                <input
+                    matInput
+                    [formControlName]="'hora_obra'"
+                    >
+            </mat-form-field>
+        </div>
+    
+        <div class="grid gap-2 grid-cols-2 w-full">
+            <mat-form-field appearance="outline" class="w-full mr-2">
+                <mat-label>Valor</mat-label>
+                <input
+                    matInput
+                    [formControlName]="'valor'"
+                    >
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline" class="w-full mr-2">
+                <mat-label>Vendedor</mat-label>
+                <input
+                    matInput
+                    [formControlName]="'vendedor'"
+                    >
+                <!--
+                <button>
+                    <mat-icon
+                    class="icon-size-5"
+                    [svgIcon]="'heroicons_outline:plus'"></mat-icon>
+                </button>-->
+            </mat-form-field>
+        </div>
+    
+        <div class="grid gap-2 grid-cols-2 w-full mb-5">
+            Valor unitario: 100
+        </div>
+    
+        <div class="grid gap-2 grid-cols-2 w-full">
+            <mat-form-field appearance="outline" class="w-full mr-2">
+                <mat-label>Plazo pagos(Días)</mat-label>
+                <input
+                    matInput
+                    [formControlName]="'plazo_pagos'"
+                    >
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline" class="w-full mr-2">
+                <mat-label>Conductor</mat-label>
+                <input
+                    matInput
+                    [formControlName]="'conductor'"
+                    >
+    
+                <!--
+                <button>
+                    <mat-icon
+                    class="icon-size-5"
+                    [svgIcon]="'heroicons_outline:plus'"></mat-icon>
+                </button>-->
+            </mat-form-field>
+        </div>
+    
+        <div class="grid gap-2 grid-cols-2 w-full">
+            <mat-form-field appearance="outline" class="w-full mr-2">
+                <mat-label>Dirección entrega</mat-label>
+                <input
+                    matInput
+                    [formControlName]="'direccion_entrega'"
+                    >
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline" class="w-full mr-2">
+                <mat-label>Estado</mat-label>
+                <input
+                    matInput
+                    [formControlName]="'estado'"
+                    >
+            </mat-form-field>
+        </div>
+    
+        <div class="grid gap-2 grid-cols-2 w-full">
+            <mat-form-field appearance="outline" class="w-full mr-2">
+                <mat-label>Dirección entrega</mat-label>
+                <input
+                    matInput
+                    [formControlName]="'direccion_entrega'"
+                    >
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline" class="w-full mr-2">
+                <mat-label>Estado</mat-label>
+                <input
+                    matInput
+                    [formControlName]="'estado'"
+                    >
+            </mat-form-field>
+        </div>
+    
+        <div class="grid gap-2 grid-cols-2 w-full">
+            <mat-form-field appearance="outline" class="w-full mr-2">
+                <mat-label>Tipo de descarga</mat-label>
+                <input
+                    matInput
+                    [formControlName]="'tipo_descarga'"
+                    >
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline" class="w-full mr-2">
+                <mat-label>Observaciones</mat-label>
+                <input
+                    matInput
+                    [formControlName]="'observaciones'"
+                    >
+            </mat-form-field>
+        </div>
+    
+        <div>
+            <button mat-button>
+                Cancelar
+            </button>
+    
+            <button mat-button>
+                Guardar
+            </button>
+        </div>
+    
+    </form>
+</section>

@@ -3,6 +3,7 @@ import { AuthGuard } from 'app/core/auth/guards/auth.guard';
 import { NoAuthGuard } from 'app/core/auth/guards/noAuth.guard';
 import { LayoutComponent } from 'app/layout/layout.component';
 import { InitialDataResolver } from 'app/app.resolvers';
+import { InicioComponent } from './page/inicio/inicio.component';
 
 // @formatter:off
 /* eslint-disable max-len */
@@ -10,7 +11,7 @@ import { InitialDataResolver } from 'app/app.resolvers';
 export const appRoutes: Route[] = [
 
     // Redirect empty path to '/example'
-    {path: '', pathMatch : 'full', redirectTo: 'example'},
+    {path: '', pathMatch : 'full', redirectTo: 'inicio'},
 
     // Redirect signed in user to the '/example'
     //
@@ -75,6 +76,7 @@ export const appRoutes: Route[] = [
         },
         children   : [
             {path: 'example', loadChildren: () => import('app/modules/admin/example/example.module').then(m => m.ExampleModule)},
+            {path: 'inicio', loadChildren: () => import('app/page/inicio/inicio.module').then(m => m.InicioModule)},
         ]
     }
 ];

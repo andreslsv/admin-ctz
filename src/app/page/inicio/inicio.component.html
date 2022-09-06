@@ -1,0 +1,171 @@
+<section class="flex flex-col w-full px-10">
+    <div class="grid gap-2 grid-cols-4 w-full h-auto my-10">
+        <div class="text-center flex flex-col py-10 bg-white m-5 rounded-3xl">
+            <span class="text-7xl font-bold"><mat-icon [svgIcon]="'heroicons_outline:clipboard-list'"></mat-icon>6</span>
+            <span class="font-bold">Pedidos</span>
+        </div>
+        <div class="text-center flex flex-col py-10 bg-white m-5 rounded-3xl">
+            <span class="text-7xl font-bold"><mat-icon [svgIcon]="'heroicons_outline:database'"></mat-icon>37</span>
+            <span class="font-bold">M3 pedidos</span>
+        </div>
+        <div class="text-center flex flex-col py-10 bg-white m-5 rounded-3xl">
+            <span class="text-7xl font-bold"><mat-icon [svgIcon]="'heroicons_outline:clipboard-copy'"></mat-icon>6</span>
+            <span class="font-bold">Por despachar</span>
+        </div>
+        <div class="text-center flex flex-col py-10 bg-white m-5 rounded-3xl">
+            <span class="text-7xl font-bold"><mat-icon [svgIcon]="'heroicons_outline:clipboard-check'"></mat-icon>0</span>
+            <span class="font-bold">Despachados</span>
+        </div>
+    </div>
+
+    <div>
+
+        <div class="flex mb-5">
+            <button (click)="generarExcelModal()" mat-button class="bg-[#4CAF50]"><mat-icon class="text-white" [svgIcon]="'heroicons_outline:table'"></mat-icon></button>
+            <button (click)="cerrarDiaModal()" mat-button class="bg-[#E53935] text-white ml-2">Cerrar día<mat-icon class="text-white" [svgIcon]="'heroicons_outline:shield-exclamation'"></mat-icon></button>
+            <button (click)="pedidoModal()" mat-button class="bg-[#E53935] text-white ml-2">Pedido<mat-icon class="text-white" [svgIcon]="'heroicons_outline:plus'"></mat-icon></button>
+        </div>
+
+        <form [formGroup]="filtroPedidoForm" crossOrigin="Anonymous" class="grid gap-2 grid-cols-3">
+            
+            <mat-form-field class="w-full mr-2">
+                <mat-label>Cliente</mat-label>
+                <input
+                    matInput
+                    [formControlName]="'cliente'"
+                    >
+                <mat-icon
+                    matSuffix
+                    class="icon-size-5"
+                    [svgIcon]="'heroicons_outline:search'"></mat-icon>
+            </mat-form-field>
+            
+            <mat-form-field class="w-full mr-2">
+                <mat-label>Fecha</mat-label>
+                <input
+                    matInput
+                    [formControlName]="'fecha1'"
+                    [matDatepicker]="picker"
+                    ><!--[matDatepicker]="picker"-->
+                    
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+                <mat-label>Fecha</mat-label>
+                <input
+                    matInput
+                    [formControlName]="'fecha2'"
+                    [matDatepicker]="picker2"
+                    ><!--[matDatepicker]="picker"-->
+                    
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+        </form>
+    </div>
+
+    <div>
+        <table mat-table [dataSource]="dataSource" class="rounded-6xl w-auto mt-10 p-5">
+
+            <ng-container matColumnDef="cliente">
+              <th mat-header-cell *matHeaderCellDef> Cliente </th>
+              <td mat-cell *matCellDef="let element"> {{element.cliente}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="fecha_despacho">
+              <th mat-header-cell *matHeaderCellDef> Fecha despacho </th>
+              <td mat-cell *matCellDef="let element"> {{element.fecha_despacho}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="hora_cargue">
+              <th mat-header-cell *matHeaderCellDef> Hora cargue </th>
+              <td mat-cell *matCellDef="let element"> {{element.hora_cargue}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="hora_obra">
+              <th mat-header-cell *matHeaderCellDef> Hora en obra </th>
+              <td mat-cell *matCellDef="let element"> {{element.hora_obra}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ult_actualizacion">
+                <th mat-header-cell *matHeaderCellDef> Ultima actualización </th>
+                <td mat-cell *matCellDef="let element"> {{element.ult_actualizacion}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="direccion">
+                <th mat-header-cell *matHeaderCellDef> Dirección </th>
+                <td mat-cell *matCellDef="let element"> {{element.direccion}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="observaciones">
+                <th mat-header-cell *matHeaderCellDef> Observaciones </th>
+                <td mat-cell *matCellDef="let element"> {{element.observaciones}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="descarga">
+                <th mat-header-cell *matHeaderCellDef> Descarga </th>
+                <td mat-cell *matCellDef="let element"> {{element.descarga}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="concreto">
+                <th mat-header-cell *matHeaderCellDef> Concreto </th>
+                <td mat-cell *matCellDef="let element"> {{element.concreto}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="precio_concreto">
+                <th mat-header-cell *matHeaderCellDef> Precio concreto </th>
+                <td mat-cell *matCellDef="let element"> {{element.precio_concreto}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="m3">
+                <th mat-header-cell *matHeaderCellDef> M3 </th>
+                <td mat-cell *matCellDef="let element"> {{element.m3}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="precio_pedido">
+                <th mat-header-cell *matHeaderCellDef> Precio pedido </th>
+                <td mat-cell *matCellDef="let element"> {{element.precio_pedido}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="vendedor">
+                <th mat-header-cell *matHeaderCellDef> Vendedor </th>
+                <td mat-cell *matCellDef="let element"> {{element.vendedor}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="conductor">
+                <th mat-header-cell *matHeaderCellDef> Conductor </th>
+                <td mat-cell *matCellDef="let element"> {{element.conductor}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="estado">
+                <th mat-header-cell *matHeaderCellDef> Estado </th>
+                <td mat-cell *matCellDef="let element"> {{element.estado}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="acciones">
+                <th mat-header-cell *matHeaderCellDef> Acciones </th>
+                <td mat-cell *matCellDef="let element">
+                    <div class="flex">
+                        <button mat-button>
+                            <mat-icon
+                            matSuffix
+                            class="icon-size-5"
+                            [svgIcon]="'heroicons_outline:external-link'"></mat-icon>
+                        </button>
+                        <button mat-button class="bg-[#E53935]">
+                            <mat-icon
+                            matSuffix
+                            class="icon-size-5 text-white"
+                            [svgIcon]="'heroicons_outline:trash'"></mat-icon>
+                        </button>
+                    </div>
+                </td>
+            </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+    </div>
+</section>
