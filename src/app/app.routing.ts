@@ -77,6 +77,7 @@ export const appRoutes: Route[] = [
         children   : [
             {path: 'example', loadChildren: () => import('app/modules/admin/example/example.module').then(m => m.ExampleModule)},
             {path: 'inicio', loadChildren: () => import('app/page/inicio/inicio.module').then(m => m.InicioModule)},
+            {path: 'despachos', loadChildren: () => import('app/page/despachos/despachos.module').then(m => m.DespachosModule)},
         ]
     }
 ];

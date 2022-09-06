@@ -9,6 +9,13 @@ export const defaultNavigation: FuseNavigationItem[] = [
         icon : 'heroicons_outline:home',
         link : '/inicio'
     },
+    {
+        id   : 'despachos',
+        title: 'Despachos',
+        type : 'basic',
+        icon : 'heroicons_outline:truck',
+        link : '/despachos'
+    },
 ];
 export const compactNavigation: FuseNavigationItem[] = [
     {
