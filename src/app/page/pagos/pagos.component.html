@@ -1,0 +1,122 @@
+<section class="flex flex-col w-full px-10 mt-20">
+    <div>
+
+        <form [formGroup]="filtroPedidoForm" crossOrigin="Anonymous" class="grid gap-2 grid-cols-3">
+            
+            <mat-form-field class="w-full mr-2" appearance="outline">
+                <mat-label>Cliente</mat-label>
+                <input
+                    matInput
+                    [formControlName]="'cliente'"
+                    >
+                <mat-icon
+                    matSuffix
+                    class="icon-size-5"
+                    [svgIcon]="'heroicons_outline:search'"></mat-icon>
+            </mat-form-field>
+            
+            <mat-form-field class="w-full mr-2" appearance="outline">
+                <mat-label>Fecha</mat-label>
+                <input
+                    matInput
+                    [formControlName]="'fecha1'"
+                    [matDatepicker]="picker"
+                    >
+                    
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field class="w-full" appearance="outline">
+                <mat-label>Fecha</mat-label>
+                <input
+                    matInput
+                    [formControlName]="'fecha2'"
+                    [matDatepicker]="picker2"
+                    >
+                    
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+        </form>
+    </div>
+
+    <div>
+        <table mat-table [dataSource]="dataSource" class="rounded-6xl w-full mt-10 p-5">
+
+            <ng-container matColumnDef="id_pedido">
+              <th mat-header-cell *matHeaderCellDef> Id pedido </th>
+              <td mat-cell *matCellDef="let element"> {{element.id_pedido}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="cliente">
+              <th mat-header-cell *matHeaderCellDef> Cliente </th>
+              <td mat-cell *matCellDef="let element"> {{element.cliente}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="fecha_despacho">
+              <th mat-header-cell *matHeaderCellDef> Fecha despacho </th>
+              <td mat-cell *matCellDef="let element"> {{element.fecha_despacho}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="estado_pedido">
+              <th mat-header-cell *matHeaderCellDef> Estado pedido </th>
+              <td mat-cell *matCellDef="let element"> {{element.estado_pedido}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="valor_pedido">
+                <th mat-header-cell *matHeaderCellDef> Valor pedido </th>
+                <td mat-cell *matCellDef="let element"> {{element.valor_pedido}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ultimo_pago">
+                <th mat-header-cell *matHeaderCellDef> Último pago </th>
+                <td mat-cell *matCellDef="let element"> {{element.ultimo_pago}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="saldo">
+                <th mat-header-cell *matHeaderCellDef> Saldo </th>
+                <td mat-cell *matCellDef="let element"> {{element.saldo}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="fecha_pago">
+                <th mat-header-cell *matHeaderCellDef> Fecha pago </th>
+                <td mat-cell *matCellDef="let element"> {{element.fecha_pago}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="estado_credito">
+                <th mat-header-cell *matHeaderCellDef> Estado crédito </th>
+                <td mat-cell *matCellDef="let element">
+                    <span (click)="cambiarEstadoModal()" class="p-2 cursor-pointer rounded-full text-white text-sm" [ngClass]="element.estado_credito=='2'?'bg-[#E53935]':'bg-[#26A69A]'">{{element.estado_credito=='1'?'Despachado':'Finalizado'}}</span>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="estado">
+                <th mat-header-cell *matHeaderCellDef> Estado </th>
+                <td mat-cell *matCellDef="let element">
+                    <div>
+                        <span (click)="crearPagoModal()" class="p-2 cursor-pointer rounded-full text-white bg-[#37474F] text-sm ml-2">Pago</span>
+                    </div>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="acciones">
+                <th mat-header-cell *matHeaderCellDef> Acciones </th>
+                <td mat-cell *matCellDef="let element">
+                    <div class="flex">
+                        <button mat-button
+                        (click)="listaPagoModal()">
+                            <mat-icon
+                            matSuffix
+                            class="icon-size-5"
+                            [svgIcon]="'heroicons_outline:eye'"></mat-icon>
+                        </button>
+                    </div>
+                </td>
+            </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+    </div>
+</section>

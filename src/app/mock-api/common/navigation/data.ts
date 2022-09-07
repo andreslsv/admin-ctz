@@ -16,6 +16,13 @@ export const defaultNavigation: FuseNavigationItem[] = [
         icon : 'heroicons_outline:truck',
         link : '/despachos'
     },
+    {
+        id   : 'pagos',
+        title: 'Pagos',
+        type : 'basic',
+        icon : 'heroicons_outline:cash',
+        link : '/pagos'
+    },
 ];
 export const compactNavigation: FuseNavigationItem[] = [
     {
