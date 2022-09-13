@@ -23,6 +23,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { DespachosComponent } from './page/despachos/despachos.component';
 import { PagosComponent } from './page/pagos/pagos.component';
+import { TipoConcretoComponent } from './page/tipo-concreto/tipo-concreto.component';
 
 
 const routerConfig: ExtraOptions = {
@@ -35,7 +36,8 @@ const routerConfig: ExtraOptions = {
         AppComponent,
         InicioComponent,
         DespachosComponent,
-        PagosComponent
+        PagosComponent,
+        TipoConcretoComponent
     ],
     imports     : [
         BrowserModule,

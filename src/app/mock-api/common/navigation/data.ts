@@ -23,6 +23,13 @@ export const defaultNavigation: FuseNavigationItem[] = [
         icon : 'heroicons_outline:cash',
         link : '/pagos'
     },
+    {
+        id   : 'tipoconcreto',
+        title: 'Tipo concreto',
+        type : 'basic',
+        icon : 'heroicons_outline:database',
+        link : '/tipoconcreto'
+    },
 ];
 export const compactNavigation: FuseNavigationItem[] = [
     {

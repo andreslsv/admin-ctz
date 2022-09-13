@@ -79,6 +79,7 @@ export const appRoutes: Route[] = [
             {path: 'inicio', loadChildren: () => import('app/page/inicio/inicio.module').then(m => m.InicioModule)},
             {path: 'despachos', loadChildren: () => import('app/page/despachos/despachos.module').then(m => m.DespachosModule)},
             {path: 'pagos', loadChildren: () => import('app/page/pagos/pagos.module').then(m => m.PagosModule)},
+            {path: 'tipoconcreto', loadChildren: () => import('app/page/tipo-concreto/tipo-concreto.module').then(m => m.TipoConcretoModule)},
         ]
     }
 ];
