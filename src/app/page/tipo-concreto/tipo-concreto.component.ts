@@ -44,6 +44,8 @@ export class TipoConcretoComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result: any) => {});
   }
 
+  
+
   constructor(private _formBuilder: FormBuilder,public _dialog: MatDialog) { }
 
   ngOnInit(): void {

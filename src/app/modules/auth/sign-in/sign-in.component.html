@@ -33,18 +33,18 @@
                 [formGroup]="signInForm"
                 #signInNgForm="ngForm">
 
-                <!-- Email field -->
+                <!-- Nick field -->
                 <mat-form-field class="w-full">
-                    <mat-label>Email address</mat-label>
+                    <mat-label>Nick</mat-label>
                     <input
-                        id="email"
+                        id="nick"
                         matInput
-                        [formControlName]="'email'">
-                    <mat-error *ngIf="signInForm.get('email').hasError('required')">
-                        Email address is required
+                        [formControlName]="'nick'">
+                    <mat-error *ngIf="signInForm.get('nick').hasError('required')">
+                        Nick is required
                     </mat-error>
-                    <mat-error *ngIf="signInForm.get('email').hasError('email')">
-                        Please enter a valid email address
+                    <mat-error *ngIf="signInForm.get('nick').hasError('nick')">
+                        Please enter a valid Nick
                     </mat-error>
                 </mat-form-field>
 
@@ -77,7 +77,7 @@
                 </mat-form-field>
 
                 <!-- Actions -->
-                <div class="inline-flex items-end justify-between w-full mt-1.5">
+                <!--<div class="inline-flex items-end justify-between w-full mt-1.5">
                     <mat-checkbox
                         [color]="'primary'"
                         [formControlName]="'rememberMe'">
@@ -87,7 +87,7 @@
                         class="text-md font-medium text-primary-500 hover:underline"
                         [routerLink]="['/forgot-password']">Forgot password?
                     </a>
-                </div>
+                </div>-->
 
                 <!-- Submit button -->
                 <button
