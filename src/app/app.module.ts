@@ -24,6 +24,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { DespachosComponent } from './page/despachos/despachos.component';
 import { PagosComponent } from './page/pagos/pagos.component';
 import { TipoConcretoComponent } from './page/tipo-concreto/tipo-concreto.component';
+import {MatSelectModule} from '@angular/material/select';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 
 
 const routerConfig: ExtraOptions = {
@@ -66,7 +69,9 @@ const routerConfig: ExtraOptions = {
         MatInputModule,
         MatDatepickerModule,
         MatNativeDateModule,
-        MatButtonModule
+        MatButtonModule,
+        MatSelectModule,
+        MatPaginatorModule
     ],
     bootstrap   : [
         AppComponent

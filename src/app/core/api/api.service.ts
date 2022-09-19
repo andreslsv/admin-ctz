@@ -8,11 +8,26 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
+
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'access-token': localStorage.getItem('accessToken'),
+    })
+  };
+
   constructor(private _httpClient:HttpClient) { }
 
+  public getData(nombreQuery,queryParams): Observable<any>{
+    return this._httpClient.get(`${environment.serverUrl}/api/${nombreQuery}?${queryParams}`,this.httpOptions);
+  }
 
-  public login(credentials: { name: string; password: string }): Observable<any>{
-    return this._httpClient.post(`${environment.serverUrl}/login`,credentials);
+  public setData(nombreQuery,dataForm: { nombre: string; unidad_medida: string }): Observable<any>{
+    return this._httpClient.post(`${environment.serverUrl}/api/${nombreQuery}`,dataForm,this.httpOptions);
+  }
+
+  public deleteData(nombreQuery,idData): Observable<any>{
+    return this._httpClient.delete(`${environment.serverUrl}/api/${nombreQuery}/${idData}`,this.httpOptions);
   }
 
 }

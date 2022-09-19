@@ -26,6 +26,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { TipoConcretoComponent } from './tipo-concreto.component';
+import { ConcretoComponent } from './concreto/concreto.component';
+import {MatSelectModule} from '@angular/material/select';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 const inicioRoutes: Route[] = [
@@ -37,6 +40,8 @@ const inicioRoutes: Route[] = [
 
 @NgModule({
     declarations: [
+  
+    ConcretoComponent
   ],
     imports     : [
         RouterModule.forChild(inicioRoutes),
@@ -67,7 +72,10 @@ const inicioRoutes: Route[] = [
 
         ReactiveFormsModule,
         MatFormFieldModule,
-        MatDatepickerModule
+        MatDatepickerModule,
+        MatSelectModule,
+        MatPaginatorModule
+        
     ]
 })
 export class TipoConcretoModule
