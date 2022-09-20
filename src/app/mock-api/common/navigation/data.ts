@@ -30,6 +30,13 @@ export const defaultNavigation: FuseNavigationItem[] = [
         icon : 'heroicons_outline:database',
         link : '/tipoconcreto'
     },
+    {
+        id   : 'usuarios',
+        title: 'Usuarios',
+        type : 'basic',
+        icon : 'heroicons_outline:user-circle',
+        link : '/usuarios'
+    },
 ];
 export const compactNavigation: FuseNavigationItem[] = [
     {

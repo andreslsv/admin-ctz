@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { ApiService } from 'app/core/api/api.service';
 import { CerrarDiaComponent } from './cerrar-dia/cerrar-dia.component';
 import { GenerarExcelComponent } from './generar-excel/generar-excel.component';
 import { PedidoComponent } from './pedido/pedido.component';
@@ -40,6 +41,10 @@ const ELEMENT_DATA = [
 })
 
 export class InicioComponent implements OnInit {
+  limit=5;
+  offset=0;
+  items_totales=100;
+  pagina = 1;
 
   displayedColumns2: string[] = ['position', 'name', 'weight', 'symbol'];
   displayedColumns: string[] = ['cliente', 'fecha_despacho', 'hora_cargue', 'hora_obra', 'ult_actualizacion', 'direccion', 'observaciones', 'descarga', 'concreto', 'precio_concreto', 'm3', 'precio_pedido', 'vendedor', 'conductor', 'estado', 'acciones'];
@@ -52,7 +57,7 @@ export class InicioComponent implements OnInit {
     cliente     : [, []]
   });
 
-  constructor(private _formBuilder: FormBuilder,public _dialog: MatDialog,) { }
+  constructor(private _formBuilder: FormBuilder,public _dialog: MatDialog, private _apiService: ApiService) { }
 
   
   generarExcelModal() {
@@ -82,8 +87,26 @@ export class InicioComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result: any) => {});
   }
 
-  ngOnInit(): void {
+  getPedido(){
+    const nombreQuery ='pedido';
+    //const search_nombre = this.search_nombre ? `search_nombre=${this.search_nombre}&`:"";
+    const limit = this.limit ? `limit=${this.limit}&`:"";
+    const offset = `offset=${this.offset}`;
 
+    const queryParams=`${limit}${offset}`;
+  
+    this._apiService.getData(nombreQuery,queryParams).
+    subscribe((response) => {
+      console.log("Esta es la respuesta de la data =>", response);
+     },
+     error=>{
+       console.log(error);
+     }
+     );
+  }
+
+  ngOnInit(): void {
+    this.getPedido();
   }
 
 }

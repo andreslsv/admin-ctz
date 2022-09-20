@@ -80,6 +80,7 @@ export const appRoutes: Route[] = [
             {path: 'despachos', loadChildren: () => import('app/page/despachos/despachos.module').then(m => m.DespachosModule)},
             {path: 'pagos', loadChildren: () => import('app/page/pagos/pagos.module').then(m => m.PagosModule)},
             {path: 'tipoconcreto', loadChildren: () => import('app/page/tipo-concreto/tipo-concreto.module').then(m => m.TipoConcretoModule)},
+            {path: 'usuarios', loadChildren: () => import('app/page/usuarios/usuarios.module').then(m => m.UsuariosModule)},
         ]
     }
 ];
