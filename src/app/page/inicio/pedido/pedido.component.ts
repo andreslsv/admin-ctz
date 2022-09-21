@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
+import { ApiService } from 'app/core/api/api.service';
 
 @Component({
   selector: 'app-pedido',
@@ -8,7 +10,7 @@ import { FormBuilder } from '@angular/forms';
 })
 export class PedidoComponent implements OnInit {
 
-  filtroPedidoForm = this._formBuilder.group({
+  pedidoForm = this._formBuilder.group({
     cliente           : [, []],
     tipo_concreto     : [, []],
     metros3           : [, []],
@@ -25,7 +27,25 @@ export class PedidoComponent implements OnInit {
     observaciones     : [, []],
   });
 
-  constructor(private _formBuilder: FormBuilder) { }
+  guardarPedido(){
+    const nombreQuery ='pedido';
+    const dataPedido = this.pedidoForm.value;
+
+    const queryParams=`search:"",orderBy:"id",ordenar:"desc",take:10`;
+    const queryProps='id,nombre,fecha,estado,hora_inicio';
+  
+    this._apiService.setData(nombreQuery,dataPedido).
+    subscribe((response) => {
+      console.log("Esta es la respuesta de la data =>", response);
+      this.dialogRef.close({});
+     },
+     error=>{
+       console.log(error);
+     }
+     );
+  }
+
+  constructor(private _formBuilder: FormBuilder, private _apiService: ApiService, public dialogRef: MatDialogRef<PedidoComponent>) { }
 
   ngOnInit(): void {
   }

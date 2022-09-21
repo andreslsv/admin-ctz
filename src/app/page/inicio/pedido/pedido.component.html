@@ -1,5 +1,5 @@
 <section class="h-full overflow-y-scroll">
-    <form [formGroup]="filtroPedidoForm" crossOrigin="Anonymous">
+    <form [formGroup]="pedidoForm" crossOrigin="Anonymous">
     
         <div class="grid gap-2 grid-cols-2 w-full">
             <mat-form-field appearance="outline" class="w-full mb-0">
@@ -36,6 +36,10 @@
                     matInput
                     [formControlName]="'tipo_concreto'"
                     >
+                    <mat-icon
+                    matSuffix
+                    class="hidden sm:flex icon-size-5"
+                    [svgIcon]="'heroicons_outline:database'"></mat-icon>
     
                 <!--
                 <button>
@@ -51,6 +55,10 @@
                     matInput
                     [formControlName]="'hora_cargue'"
                     >
+                <mat-icon
+                    matSuffix
+                    class="hidden sm:flex icon-size-5"
+                    [svgIcon]="'heroicons_outline:clock'"></mat-icon>
             </mat-form-field>
         </div>
     
@@ -69,6 +77,10 @@
                     matInput
                     [formControlName]="'hora_obra'"
                     >
+                <mat-icon
+                    matSuffix
+                    class="hidden sm:flex icon-size-5"
+                    [svgIcon]="'heroicons_outline:clock'"></mat-icon>
             </mat-form-field>
         </div>
     
@@ -79,6 +91,10 @@
                     matInput
                     [formControlName]="'valor'"
                     >
+                <mat-icon
+                    matSuffix
+                    class="hidden sm:flex icon-size-5"
+                    [svgIcon]="'heroicons_outline:currency-dollar'"></mat-icon>
             </mat-form-field>
     
             <mat-form-field appearance="outline" class="w-full mr-2">
@@ -87,6 +103,10 @@
                     matInput
                     [formControlName]="'vendedor'"
                     >
+                <mat-icon
+                    matSuffix
+                    class="hidden sm:flex icon-size-5"
+                    [svgIcon]="'heroicons_outline:briefcase'"></mat-icon>
                 <!--
                 <button>
                     <mat-icon
@@ -115,6 +135,10 @@
                     matInput
                     [formControlName]="'conductor'"
                     >
+                <mat-icon
+                    matSuffix
+                    class="hidden sm:flex icon-size-5"
+                    [svgIcon]="'heroicons_outline:truck'"></mat-icon>
     
                 <!--
                 <button>
@@ -132,24 +156,10 @@
                     matInput
                     [formControlName]="'direccion_entrega'"
                     >
-            </mat-form-field>
-    
-            <mat-form-field appearance="outline" class="w-full mr-2">
-                <mat-label>Estado</mat-label>
-                <input
-                    matInput
-                    [formControlName]="'estado'"
-                    >
-            </mat-form-field>
-        </div>
-    
-        <div class="grid gap-2 grid-cols-2 w-full">
-            <mat-form-field appearance="outline" class="w-full mr-2">
-                <mat-label>Dirección entrega</mat-label>
-                <input
-                    matInput
-                    [formControlName]="'direccion_entrega'"
-                    >
+                <mat-icon
+                    matSuffix
+                    class="hidden sm:flex icon-size-5"
+                    [svgIcon]="'heroicons_outline:office-building'"></mat-icon>
             </mat-form-field>
     
             <mat-form-field appearance="outline" class="w-full mr-2">
@@ -168,6 +178,10 @@
                     matInput
                     [formControlName]="'tipo_descarga'"
                     >
+                <mat-icon
+                    matSuffix
+                    class="hidden sm:flex icon-size-5"
+                    [svgIcon]="'heroicons_outline:archive'"></mat-icon>
             </mat-form-field>
     
             <mat-form-field appearance="outline" class="w-full mr-2">
@@ -176,6 +190,10 @@
                     matInput
                     [formControlName]="'observaciones'"
                     >
+                <mat-icon
+                    matSuffix
+                    class="hidden sm:flex icon-size-5"
+                    [svgIcon]="'heroicons_outline:information-circle'"></mat-icon>
             </mat-form-field>
         </div>
     
@@ -184,7 +202,7 @@
                 Cancelar
             </button>
     
-            <button mat-button>
+            <button mat-button (click)="guardarPedido()">
                 Guardar
             </button>
         </div>

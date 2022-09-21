@@ -48,7 +48,7 @@ export class InicioComponent implements OnInit {
 
   displayedColumns2: string[] = ['position', 'name', 'weight', 'symbol'];
   displayedColumns: string[] = ['cliente', 'fecha_despacho', 'hora_cargue', 'hora_obra', 'ult_actualizacion', 'direccion', 'observaciones', 'descarga', 'concreto', 'precio_concreto', 'm3', 'precio_pedido', 'vendedor', 'conductor', 'estado', 'acciones'];
-  dataSource = ELEMENT_DATA;
+  dataSource:any[]=[];
 
 
   filtroPedidoForm = this._formBuilder.group({
@@ -84,12 +84,14 @@ export class InicioComponent implements OnInit {
       data:{}
     });
   
-    dialogRef.afterClosed().subscribe((result: any) => {});
+    dialogRef.afterClosed().subscribe((result: any) => {
+      this.getPedido();
+      this.dataSource;
+    });
   }
 
   getPedido(){
     const nombreQuery ='pedido';
-    //const search_nombre = this.search_nombre ? `search_nombre=${this.search_nombre}&`:"";
     const limit = this.limit ? `limit=${this.limit}&`:"";
     const offset = `offset=${this.offset}`;
 
@@ -97,6 +99,7 @@ export class InicioComponent implements OnInit {
   
     this._apiService.getData(nombreQuery,queryParams).
     subscribe((response) => {
+      this.dataSource = response;
       console.log("Esta es la respuesta de la data =>", response);
      },
      error=>{
