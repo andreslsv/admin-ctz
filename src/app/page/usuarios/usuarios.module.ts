@@ -33,6 +33,10 @@ import { UsuariosComponent } from './usuarios.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { ListaUsuariosComponent } from './lista-usuarios/lista-usuarios.component';
 import { CrearComponent } from './crear/crear.component';
+import { ListaClientesComponent } from './lista-clientes/lista-clientes.component';
+import { ListaConductoresComponent } from './lista-conductores/lista-conductores.component';
+import { ListaVendedoresComponent } from './lista-vendedores/lista-vendedores.component';
+import { RolesPermisosComponent } from './roles-permisos/roles-permisos.component';
 
 
 const usuariosRoutes: Route[] = [
@@ -40,8 +44,13 @@ const usuariosRoutes: Route[] = [
         path     : '',
         component: UsuariosComponent,
         children   : [
-            {path: '', component:ListaUsuariosComponent},
+            {path: '', redirectTo: 'usuarios'},
+            {path: 'usuarios', component:ListaUsuariosComponent},
+            {path: 'clientes', component:ListaClientesComponent},
+            {path: 'conductores', component:ListaConductoresComponent},
+            {path: 'vendedores', component:ListaVendedoresComponent},
             {path: 'crear', component:CrearComponent},
+            {path: 'rolespermisos', component:RolesPermisosComponent},
         ]
     }
 ];
@@ -51,7 +60,11 @@ const usuariosRoutes: Route[] = [
   
   
     ListaUsuariosComponent,
-            CrearComponent
+            CrearComponent,
+            ListaClientesComponent,
+            ListaConductoresComponent,
+            ListaVendedoresComponent,
+            RolesPermisosComponent
   ],
     imports     : [
         RouterModule.forChild(usuariosRoutes),

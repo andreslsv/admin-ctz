@@ -14,10 +14,10 @@
                 </div>
             </div>
 
-            
             <div class="flex flex-col divide-y border-t border-b">
                 <ng-container *ngFor="let panel of panels">
                     <div
+                        (click)="goToPanel(panel.id)"
                         class="flex px-8 py-5 cursor-pointer"
                         [ngClass]="{'hover:bg-gray-100 dark:hover:bg-hover': !selectedPanel || selectedPanel !== panel.id,
                                     'bg-primary-50 dark:bg-hover': selectedPanel && selectedPanel === panel.id}"
@@ -31,11 +31,11 @@
                             <div
                                 class="font-medium leading-6"
                                 [ngClass]="{'text-primary dark:text-primary-500': selectedPanel && selectedPanel === panel.id}">
-                                Permisos
+                                {{panel.title}}
                             </div>
-                            <div class="mt-0.5 text-secondary">
-                                dgdfg
-                            </div>
+                            <!--<div class="mt-0.5 text-secondary">
+                                {{panel.description}}
+                            </div>-->
                         </div>
                     </div>
                 </ng-container>
