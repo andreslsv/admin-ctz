@@ -12,6 +12,7 @@ export class ConcretoComponent implements OnInit {
 
   filtroPedidoForm = this._formBuilder.group({
     nombre       : [, []],
+    precio       : [, []],
     unidad_medida       : [, []]
   });
 

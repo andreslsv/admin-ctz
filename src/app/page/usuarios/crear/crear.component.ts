@@ -47,6 +47,7 @@ export class CrearComponent implements OnInit {
     this._apiService.setData(nombreQuery,dataUsuario).
     subscribe((response) => {
       console.log("Esta es la respuesta de la data =>", response);
+      this.irListaUsuarios();
      },
      error=>{
        console.log(error);

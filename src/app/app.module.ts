@@ -45,6 +45,9 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { TranslocoModule } from '@ngneat/transloco';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { AprobacionesComponent } from './page/aprobaciones/aprobaciones.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 
 
@@ -60,7 +63,8 @@ const routerConfig: ExtraOptions = {
         DespachosComponent,
         PagosComponent,
         TipoConcretoComponent,
-        UsuariosComponent
+        UsuariosComponent,
+        AprobacionesComponent
     ],
     imports     : [
         BrowserModule,
@@ -175,7 +179,9 @@ const routerConfig: ExtraOptions = {
         SharedModule,
         MatFormFieldModule,
         MatInputModule,
-        MatDatepickerModule
+        MatDatepickerModule,
+        MatAutocompleteModule,
+        MatSlideToggleModule
     ],
     bootstrap   : [
         AppComponent

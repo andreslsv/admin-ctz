@@ -16,6 +16,14 @@
             </mat-form-field>
 
             <mat-form-field appearance="outline" class="w-full mb-0">
+                <mat-label>Precio</mat-label>
+                <input
+                    matInput
+                    [formControlName]="'precio'"
+                    >
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="w-full mb-0">
                 <mat-label>Unidad medida</mat-label>
                 <mat-select [formControlName]="'unidad_medida'">
                     <mat-option [value]="'m3'">M³</mat-option>

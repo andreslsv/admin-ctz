@@ -2,26 +2,33 @@
     <form [formGroup]="pedidoForm" crossOrigin="Anonymous">
     
         <div class="grid gap-2 grid-cols-2 w-full">
-            <mat-form-field appearance="outline" class="w-full mb-0">
+            <!--<mat-form-field appearance="outline" class="w-full mb-0">
                 <mat-label>Cliente</mat-label>
                 <input
                     matInput
                     [formControlName]="'cliente'"
                     >
-                    <!--
-                    <button>
-                        <mat-icon
-                        class="icon-size-5"
-                        [svgIcon]="'heroicons_outline:plus'"></mat-icon>
-                    </button>
-                    -->
+            </mat-form-field>-->
+
+            <!--<mat-form-field matInput appearance="outline" class="w-full mr-2">
+                <mat-label>Cliente</mat-label>
+                <mat-select matInput [formControlName]="'cliente'" class="w-full">
+                    <mat-option *ngFor="let cliente of dataCliente" [value]="cliente.id">{{cliente.nombre}}</mat-option>
+                </mat-select>
+            </mat-form-field>-->
+
+            <mat-form-field appearance="outline" class="fuse-mat-no-subscript w-full">
+                <mat-label>Cliente</mat-label>
+                <mat-select matInput [formControlName]="'clienteId'" class="w-full">
+                    <mat-option (click)="setNombreCliente(cliente.nombre)" [value]="cliente.id" *ngFor="let cliente of dataCliente">{{cliente.nombre}}</mat-option>
+                </mat-select>
             </mat-form-field>
     
             <mat-form-field appearance="outline" class="w-full mr-2">
                 <mat-label>Fecha</mat-label>
                 <input
                     matInput
-                    [formControlName]="'fecha'"
+                    [formControlName]="'fecha_despacho'"
                     [matDatepicker]="picker"
                     >
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -30,7 +37,7 @@
         </div>
     
         <div class="grid gap-2 grid-cols-2 w-full">
-            <mat-form-field appearance="outline" class="w-full mr-2">
+            <!--<mat-form-field appearance="outline" class="w-full mr-2">
                 <mat-label>Tipo de concreto</mat-label>
                 <input
                     matInput
@@ -40,20 +47,23 @@
                     matSuffix
                     class="hidden sm:flex icon-size-5"
                     [svgIcon]="'heroicons_outline:database'"></mat-icon>
-    
-                <!--
-                <button>
-                    <mat-icon
-                    class="icon-size-5"
-                    [svgIcon]="'heroicons_outline:plus'"></mat-icon>
-                </button>-->
-            </mat-form-field>
+            </mat-form-field>-->
+                    
+                <mat-form-field appearance="outline" class="fuse-mat-no-subscript w-full">
+                    <mat-label>Tipo concreto</mat-label>
+                    <mat-select matInput [formControlName]="'concretoId'" class="w-full">
+                        <mat-option (click)="setNombreConcreto(concreto)" [value]="concreto.id" *ngFor="let concreto of dataConcreto">{{concreto.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+            
     
             <mat-form-field appearance="outline" class="w-full mr-2">
                 <mat-label>Hora en cargue</mat-label>
                 <input
                     matInput
                     [formControlName]="'hora_cargue'"
+                    type="time"
                     >
                 <mat-icon
                     matSuffix
@@ -66,14 +76,16 @@
             <mat-form-field appearance="outline" class="w-full mr-2">
                 <mat-label>Metros3</mat-label>
                 <input
+                type="number"
                     matInput
-                    [formControlName]="'metros3'"
+                    [formControlName]="'m3'"
                     >
             </mat-form-field>
     
             <mat-form-field appearance="outline" class="w-full mr-2">
                 <mat-label>Hora en obra</mat-label>
                 <input
+                type="time"
                     matInput
                     [formControlName]="'hora_obra'"
                     >
@@ -88,6 +100,7 @@
             <mat-form-field appearance="outline" class="w-full mr-2">
                 <mat-label>Valor</mat-label>
                 <input
+                    type="number"
                     matInput
                     [formControlName]="'valor'"
                     >
@@ -97,7 +110,7 @@
                     [svgIcon]="'heroicons_outline:currency-dollar'"></mat-icon>
             </mat-form-field>
     
-            <mat-form-field appearance="outline" class="w-full mr-2">
+            <!--<mat-form-field appearance="outline" class="w-full mr-2">
                 <mat-label>Vendedor</mat-label>
                 <input
                     matInput
@@ -107,29 +120,32 @@
                     matSuffix
                     class="hidden sm:flex icon-size-5"
                     [svgIcon]="'heroicons_outline:briefcase'"></mat-icon>
-                <!--
-                <button>
-                    <mat-icon
-                    class="icon-size-5"
-                    [svgIcon]="'heroicons_outline:plus'"></mat-icon>
-                </button>-->
+            </mat-form-field>-->
+
+            <mat-form-field appearance="outline" class="fuse-mat-no-subscript w-full">
+                <mat-label>Vendedor</mat-label>
+                <mat-select matInput [formControlName]="'vendedoreId'" class="w-full">
+                    <mat-option (click)="setNombreVendedor(vendedor.nombre)" [value]="vendedor.id" *ngFor="let vendedor of dataVendedor">{{vendedor.nombre}}</mat-option>
+                </mat-select>
             </mat-form-field>
+
         </div>
     
         <div class="grid gap-2 grid-cols-2 w-full mb-5">
-            Valor unitario: 100
+            Valor unitario: {{precioConcreto}}
         </div>
     
         <div class="grid gap-2 grid-cols-2 w-full">
             <mat-form-field appearance="outline" class="w-full mr-2">
                 <mat-label>Plazo pagos(Días)</mat-label>
                 <input
+                    type="number"
                     matInput
                     [formControlName]="'plazo_pagos'"
                     >
             </mat-form-field>
     
-            <mat-form-field appearance="outline" class="w-full mr-2">
+            <!--<mat-form-field appearance="outline" class="w-full mr-2">
                 <mat-label>Conductor</mat-label>
                 <input
                     matInput
@@ -139,13 +155,13 @@
                     matSuffix
                     class="hidden sm:flex icon-size-5"
                     [svgIcon]="'heroicons_outline:truck'"></mat-icon>
-    
-                <!--
-                <button>
-                    <mat-icon
-                    class="icon-size-5"
-                    [svgIcon]="'heroicons_outline:plus'"></mat-icon>
-                </button>-->
+            </mat-form-field>-->
+
+            <mat-form-field appearance="outline" class="fuse-mat-no-subscript w-full">
+                <mat-label>Conductor</mat-label>
+                <mat-select matInput [formControlName]="'conductoreId'" class="w-full">
+                    <mat-option (click)="setNombreConductor(conductor.nombre)" [value]="conductor.id" *ngFor="let conductor of dataConductor">{{conductor.nombre}}</mat-option>
+                </mat-select>
             </mat-form-field>
         </div>
     
@@ -154,7 +170,7 @@
                 <mat-label>Dirección entrega</mat-label>
                 <input
                     matInput
-                    [formControlName]="'direccion_entrega'"
+                    [formControlName]="'direccion'"
                     >
                 <mat-icon
                     matSuffix
@@ -172,7 +188,7 @@
         </div>
     
         <div class="grid gap-2 grid-cols-2 w-full">
-            <mat-form-field appearance="outline" class="w-full mr-2">
+            <!--<mat-form-field appearance="outline" class="w-full mr-2">
                 <mat-label>Tipo de descarga</mat-label>
                 <input
                     matInput
@@ -182,6 +198,18 @@
                     matSuffix
                     class="hidden sm:flex icon-size-5"
                     [svgIcon]="'heroicons_outline:archive'"></mat-icon>
+            </mat-form-field>-->
+
+            <mat-form-field appearance="outline" class="fuse-mat-no-subscript w-full">
+                <mat-label>Tipo descarga</mat-label>
+                <mat-select matInput [formControlName]="'descarga'" class="w-full">
+                    <mat-option [value]="'tipo_1'">Tipo 1</mat-option>
+                    <mat-option [value]="'tipo_2'">Tipo 2</mat-option>
+                    <mat-option [value]="'tipo_3'">Tipo 3</mat-option>
+                    <mat-option [value]="'tipo_4'">Tipo 4</mat-option>
+                    <mat-option [value]="'tipo_5'">Tipo 5</mat-option>
+                    <mat-option [value]="'tipo_6'">Tipo 6</mat-option>
+                </mat-select>
             </mat-form-field>
     
             <mat-form-field appearance="outline" class="w-full mr-2">

@@ -32,6 +32,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { GenerarExcelComponent } from './generar-excel/generar-excel.component';
 import { CerrarDiaComponent } from './cerrar-dia/cerrar-dia.component';
 import { PedidoComponent } from './pedido/pedido.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 
 const inicioRoutes: Route[] = [
@@ -74,10 +75,12 @@ const inicioRoutes: Route[] = [
         MatTabsModule,
         MatIconModule,
         MatInputModule,
+        MatSelectModule,
 
         ReactiveFormsModule,
         MatFormFieldModule,
-        MatDatepickerModule
+        MatDatepickerModule,
+        MatAutocompleteModule
     ]
 })
 export class InicioModule

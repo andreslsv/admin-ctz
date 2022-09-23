@@ -17,6 +17,13 @@ export const defaultNavigation: FuseNavigationItem[] = [
         link : '/despachos'
     },
     {
+        id   : 'aprobaciones',
+        title: 'Aprobaciones',
+        type : 'basic',
+        icon : 'heroicons_outline:clipboard-check',
+        link : '/aprobaciones'
+    },
+    {
         id   : 'pagos',
         title: 'Pagos',
         type : 'basic',
