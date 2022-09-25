@@ -3,7 +3,7 @@
 
 <!-- Navigation -->
 <fuse-vertical-navigation
-    class="dark bg-gray-900 print:hidden"
+    class="dark bg-[#383838] print:hidden"
     [mode]="isScreenSmall ? 'over' : 'side'"
     [name]="'mainNavigation'"
     [navigation]="navigation.default"
@@ -15,7 +15,7 @@
             <div class="flex items-center justify-center">
                 <img
                     class="w-8"
-                    src="assets/images/logo/logo.svg">
+                    src="assets/images/logo/logo.png">
             </div>
             <!-- Components -->
             <div class="flex items-center ml-auto">
@@ -25,8 +25,8 @@
         </div>
         <!-- User -->
         <div class="flex flex-col items-center w-full p-4">
-            <div class="relative w-24 h-24">
-                <img
+            <div class="relative w-30 h-30">
+                <!--<img
                     class="w-full h-full rounded-full"
                     *ngIf="user.avatar"
                     [src]="user.avatar"
@@ -34,24 +34,28 @@
                 <mat-icon
                     class="icon-size-24"
                     *ngIf="!user.avatar"
-                    [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
+                    [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>-->
+                <img
+                    class="w-full h-full rounded-full border-8 border-white"
+                    [src]="'assets/images/avatar.jpg'"
+                    alt="User avatar">
             </div>
             <div class="flex flex-col items-center justify-center w-full mt-6">
                 <div class="w-full whitespace-nowrap text-ellipsis overflow-hidden text-center leading-normal font-medium">
-                    {{user.name?user.name:'dfdfgdfg'}}
+                    {{user.name}}
                 </div>
                 <div class="w-full mt-0.5 whitespace-nowrap text-ellipsis overflow-hidden text-center text-md leading-normal font-medium text-secondary">
-                    {{user.email?user.email:'afdsfsdf'}}
+                    {{user.email}}
                 </div>
             </div>
         </div>
     </ng-container>
     <!-- Navigation footer hook -->
     <ng-container fuseVerticalNavigationContentFooter>
-        <div class="flex flex-0 items-center justify-center h-16 pr-6 pl-2 mt-2 mb-4 opacity-12">
+        <div class="flex flex-0 items-center justify-center h-16 pr-6 pl-2 mt-2 mb-4 opacity-60">
             <img
                 class="max-w-36"
-                src="assets/images/logo/logo-text-on-dark.svg">
+                src="assets/images/logo/logo-text-on-dark.png">
         </div>
     </ng-container>
 </fuse-vertical-navigation>
@@ -74,12 +78,12 @@
             <search [appearance]="'bar'"></search>
             <shortcuts></shortcuts>
             <messages></messages>
-            <button
+            <!--<button
                 class="lg:hidden"
                 mat-icon-button
                 (click)="quickChat.toggle()">
                 <mat-icon [svgIcon]="'heroicons_outline:chat-alt-2'"></mat-icon>
-            </button>
+            </button>-->
         </div>
     </div>
 
@@ -98,4 +102,4 @@
 </div>
 
 <!-- Quick chat -->
-<quick-chat #quickChat="quickChat"></quick-chat>
+<!--<quick-chat #quickChat="quickChat"></quick-chat>-->

@@ -48,13 +48,14 @@ export class UserService
     
     get(): Observable<User>
     {
-        
 
+        
+        
         return this._httpClient.get<User>(`${environment.serverUrl}/authuser`).pipe(
                 tap((user) => {
                     this._user.next(user);
                 })
-            );
+        );
 
         //return this._httpClient.get<User>('api/common/user').pipe(
         //    tap((user) => {

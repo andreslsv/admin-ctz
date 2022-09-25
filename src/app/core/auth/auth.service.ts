@@ -88,6 +88,8 @@ export class AuthService
                 //Guardar el usuario
                 this._userService.user = response.user;
 
+                console.log("Este es el usuario de la respuesta =>", response.user);
+
                 
                 return of(response);
             })
